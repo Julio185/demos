@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Altura flexible</title>
+
+<style type="text/css">
+
+html, body { 
+	height: 100%;
+	margin:0;
+	padding:0;
+}
+
+#contenedorPrincipal { 
+	height: 100%;
+	padding:0; 
+}
+
+#cabecera {
+	height:10%; 
+	width:100%;
+	margin:0; 
+	background:#900;
+}
+
+#desarrollo {
+	width:100%; 
+	height:80%; 
+	margin:0; 
+	background:#090;
+	overflow-y: auto;
+}
+
+
+#pie {
+	height:10%; 
+	width:100%;
+	margin:0; 
+	background:#009;
+}
+
+</style>
+
+</head>
+
+<body id="js-desarrollo">
+
+	<div id="contenedorPrincipal"> 
+		<div id="cabecera"></div>
+		<div id="desarrollo"></div>
+		<div id="pie"></div>
+	</div>
+	
+</body>
+</html>

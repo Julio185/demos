@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>tooltips</title>
+        <meta name="description" content="">
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+
+        <style>
+            #js-tooltip {
+                position: absolute; 
+                z-index: 999;
+                border: 1px solid #900;
+                border-radius: 5px;
+                padding: 10px;
+                background: #fff;
+                max-width: 150px;
+                font-size: 0.7em;
+                display:none;
+                top:0;
+                left:0;
+                }  
+        
+        </style>
+
+    </head>
+    <body>
+        <div id="js-tooltip"></div>
+        <img src="imagenes/miImagen.jpg" class="js-tooltip" title="Soy el texto que aparecerá en el tooltip" width="300" height="300"  />
+
+<script>
+
+$(document).ready(function() {
+
+
+    $(".js-tooltip").mouseenter(function(event) {
+
+        /* Recogemos el valor de title (esto se puede hacer igual con data()) */
+        var temporal = $(this).attr('title');
+
+        /* Nos cepillamos el title para que no salga de forma natural */
+        $(this).removeAttr('title');
+
+        /* Sacamos las coordenadas del raton */
+       coordenadasLeft = event.pageX;
+       coordenadasTop = event.pageY;
+
+        /* Le ajustamos el top y el left en función de su posición en la pantalla para que no se desborde por los lados ni por abajo.*/
+        var altoMonitor = $(window).height();
+        var anchoMonitor = $(window).width();
+
+        if ( coordenadasLeft < anchoMonitor-200 ) {
+            var leftCorregido = coordenadasLeft-5;
+        } else {
+            var leftCorregido = coordenadasLeft-150;
+        }
+
+        if ( coordenadasTop < altoMonitor-200 ) {
+            var topCorregido = coordenadasTop-5;
+        } else {
+            var topCorregido = coordenadasTop-150;
+        } 
+       
+        /* Incluimos el texto, desplazamos el div, lo movemos y lo mostramos */
+        $('#js-tooltip').text(temporal).css('top',topCorregido).css('left',leftCorregido).show('fast');       
+  
+        // Lo quitamos cuando salga el ratón del elemento y le devolvemos el title
+         $(this).mouseout(function() {
+            $(this).attr('title', temporal);
+            $('#js-tooltip').css('display','none');
+         });
+    });
+
+});
+
+</script>
+    </body>
+</html>
